@@ -31,7 +31,7 @@ admin.site.site_title = "AutoInsight Admin Portal"
 admin.site.index_title = "Welcome to AutoInsight Portal"
 
 urlpatterns = [
-    path('admin/clearcache/', include('clearcache.urls')),
+    # path('admin/clearcache/', include('clearcache.urls')),
     path('admin/', admin.site.urls),
     path('', include('home.urls'))
 ]
