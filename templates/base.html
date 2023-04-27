@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'style.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/autoInsight.png'%}">
+    <script src="https://kit.fontawesome.com/ef005ac5af.js" crossorigin="anonymous"></script>
+    <title> {% block title %}{% endblock title %}</title>
+</head>
+
+<body>
+    <!--Nav Bar-->
+    <nav>
+        <div class="menu-icon">
+            <span class="fas fa-bars"></span>
+        </div>
+        <div class="logo">
+            {% load static %}
+            <a href="/"><img src="{% static 'images/logos/autoInsightLogo.png'%}" alt="logo" width="140px"></a>
+        </div>
+        <div class="nav-items">
+            <li><a href="/">Home</a></li>
+            <li><a href="/cars">Car</a></li>
+            <li><a href="/bikes">Bike</a></li>
+            <li><a href="/news">Reviews & News</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+        </div>
+        <div class="search-icon">
+            <span class="fas fa-search"></span>
+        </div>
+        <div class="cancel-icon">
+            <span class="fas fa-times"></span>
+        </div>
+        <form method="get" action="/searchResult">
+            <input type="search" class="search-data" placeholder="Search" name="query" required>
+            <button type="submit" class="fas fa-search"></button>
+        </form>
+    </nav>
+
+    {% block body %}
+
+    {% endblock body %}
+
+    <!--Footer-->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    {% load static %}
+                    <img src="{%static 'images/logos/autoInsightLogoWhite.png'%}">
+                    <p>Welcome to AUTOINSIGHT, the ultimate destination for all the latest news, reviews, and insights
+                        on the automobile industry.</p>
+                </div>
+                <div class="footer-col-2">
+                    <h3>Useful link</h3>
+                    <ul>
+                        <a href="/bikes">
+                            <li>Bikes</li>
+                        </a>
+                        <a href="/cars">
+                            <li>Cars</li>
+                        </a>
+                        <a href="/about">
+                            <li>About Us</li>
+                        </a>
+                        <a href="/contact">
+                            <li>Contact Us</li>
+                        </a>
+                        <a href="/termandcondition">
+                            <li>Term & Condition</li>
+                        </a>
+                    </ul>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Connect with us</h3>
+                    <ul>
+                        <a href="https://facebook.com" target="_blank">
+                            <li><i class="fa-brands fa-facebook"></i> Facebook</li>
+                        </a>
+                        <a href="https://instagram.com/autoinsight.india" target="_blank">
+                            <li><i class="fa-brands fa-instagram"></i> Instagram</li>
+                        </a>
+                        <a href="https://twitter.com/autoinsightin" target="_blank">
+                            <li><i class="fa-brands fa-twitter"></i> Twitter</li>
+                        </a>
+                        <a href="https://youtube.com" target="_blank">
+                            <li><i class="fa-brands fa-youtube"></i> Youtube</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Copyright <i class="fa-regular fa-copyright"></i> AutoInsight. Made with <i
+                    class="fa-solid fa-heart"></i> in India</p>
+        </div>
+    </div>
+
+    <!--Scripts-->
+    {%load static%}
+    <script src="{%static 'javascript.js'%}"></script>
+
+</body>
+
+</html>

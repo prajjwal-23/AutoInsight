@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container">
+    <div class="small-container detail-page">
+        <article>
+            <div class="image">
+                <img src="{{ detail.image.url }}" alt="{{ detail.title}}_image" width="100%">
+            </div>
+            <div class="text">
+                <h1>{{ detail.title }}</h1>
+                <br>
+                <p>{{ detail.description }}</p>
+            </div>
+        </article>
+    </div>
+    <!-- Related post -->
+    <div class="small-container">
+        <h1 class="title">Related</h1>
+        <div class="row">
+            {% for news in data %}
+            <div class="col-4">
+                <a href="{% url 'detail_page' pk=news.pk %}">
+                    <img src="{{ news.image.url }}">
+                    <h4>{{ news.title }}</h4>
+                </a>
+                {% for tag in news.tags.all %}
+                <p>{{ tag.name }}</p>
+                {% endfor %}
+                <p><a href="/author?query={{news.author}}">by {{news.author}}</a> | {{ news.date }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

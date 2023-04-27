@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}You searched for {{ query }} | AutoInsight{% endblock title %}
+
+{% block body %}
+<div class="container">
+    <h1 class='authorTitle'>Search Result: {{query}} </h1>
+    <hr>
+    {% if data %}
+    <div class="small-container">
+        <div class="row">
+            {% for search in data%}
+            <div class="col-4">
+                <a href="{% url 'detail_page' pk=search.pk %}">
+                    <img src="{{ search.image.url }}">
+                    <h4>{{ search.title }}</h4>
+                </a>
+                {% for tag in search.tags.all %}
+                <p>{{ tag.name }}</p>
+                {% endfor %}
+                <p><a href="/author?query={{search.author}}">by {{search.author}}</a> | {{ search.date }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% comment %} Page Buttons {% endcomment %}
+        <div class="page-btn">
+            {% if data.has_previous %}
+            <a href="?query={{query}}&page=1"><span><i class="fa-solid fa-angles-left"></i></span></a>
+            <a href="?query={{query}}&page={{ data.previous_page_number }}"><span><i
+                        class="fa-solid fa-angle-left"></i></span></a>
+            {% endif %}
+            {% for page in pagelist %}
+            <a href="?query={{query}}&page={{page}}"><span>{{page}}</span></a>
+            {% endfor %}
+            {% if data.has_next %}
+            <a href="?query={{query}}&page={{ data.next_page_number }}"><span><i
+                        class="fa fa-angle-right"></i></span></a>
+            <a href="?query={{query}}&page={{ lastpage }}"><span><i class="fa fa-angles-right"></i></span></a>
+            {% endif %}
+        </div>
+    </div>
+    {% else %}
+    <div class="small-container">
+        <div class="row">
+            <p>No results found for <b>"{{query}}"</b>,</p>
+            <ul>
+                <li>* Make sure that all words are spelled correctly.</li>
+                <li>* Try different keywords.</li>
+                <li>* Try more general keywords.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endif %}
+</div>
+{% endblock body %}

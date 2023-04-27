@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block title %}AutoInsight | It`s all about Cars & Bikes.{% endblock title %}
+
+{% block body %}
+<!-- Header -->
+<div id='header'>
+    <div class='container'>
+        <div class="header_text">
+            <p>Welcome to</p>
+            <h1><span>AutoInsight,</span> <br>It`s all about Cars & Bikes.</h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <!--Latest News-->
+    <div class="small-container">
+        <h2 class="title">Latest News</h2>
+        <div class="row">
+            {% for news in data %}
+            <div class="col-4">
+                <a href="{% url 'detail_page' pk=news.pk %}"><img src="{{ news.image.url }}">
+                    <h4>{{ news.title }}</h4>
+                </a>
+                <a href="/author?query={{news.author}}">by {{news.author}}</a>
+                <a href="/{{news.category}}">
+                    <p style="text-transform: capitalize;">{{ news.category }}</p>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="page-btn"><a href="/news" class="btn">More News <i class="fa-solid fa-angle-right"></i></a></div>
+    </div>
+    {% comment %} Reviews {% endcomment %}
+    <div class="small-container">
+        <h2 class="title">Reviews</h2>
+        <div class="row">
+            {% for news in data_reviews %}
+            <div class="col-4">
+                <a href="{% url 'detail_page' pk=news.pk %}"><img src="{{ news.image.url }}">
+                    <h4>{{ news.title }}</h4>
+                </a>
+                <a href="/author?query={{news.author}}">by {{news.author}}</a>
+                <a href="/{{news.category}}">
+                    <p style="text-transform: capitalize;"> {{ news.category }}</p>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="page-btn"><a href="/news" class="btn">More Reviews <i class="fa-solid fa-angle-right"></i></a></div>
+    </div>
+    <!--Categories-->
+    <div class="categories">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-3">
+                    {% load static %}
+                    <img src="{%static 'images/cars.jpg'%}">
+                    <div class="layer">
+                        <h2>Cars</h2>
+                        <a href="/cars"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="col-3">
+                    {% load static %}
+                    <img src="{%static 'images/bikes.jpg'%}">
+                    <div class="layer">
+                        <h2>Bikes</h2>
+                        <a href="/bikes"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="col-3">
+                    {% load static %}
+                    <img src="{%static 'images/reviews.jpg'%}">
+                    <div class="layer">
+                        <h2>Reviews & News</h2>
+                        <a href="/news"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="brands">
+        <div class="small-container">
+            <h2 class="title">Brands</h2>
+            <div class=" animation">
+                {% for brand in brands %}
+                <div class="col-5">
+                    <img src="{{ brand.logo.url }}" alt="{{ brand.name }}">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

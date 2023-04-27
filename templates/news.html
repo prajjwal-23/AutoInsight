@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Latest News & Reviews | AutoInsight{% endblock title %}
+
+{% block body %}
+<div class="container">
+    <h1 class='authorTitle'>Latest News & Reviews</h1>
+    <hr>
+    <div class="small-container">
+        <div class="row">
+            {% for news in data %}
+            <div class="col-4">
+                <a href="{% url 'detail_page' pk=news.pk %}">
+                <img src="{{ news.image.url }}">
+                <h4>{{ news.title }}</h4></a>
+                {% for tag in news.tags.all %}
+                <p>{{ tag.name }}</p>
+                {% endfor %}
+                <p><a href="/author?query={{news.author}}">by {{news.author}}</a> | {{ news.date }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="page-btn">
+            {% if data.has_previous %}
+            <a href="?page=1"><span><i class="fa-solid fa-angles-left"></i></span></a>
+            <a href="?page={{ data.previous_page_number }}"><span><i class="fa-solid fa-angle-left"></i></span></a>
+            {% endif %}
+            {% for page in pagelist %}
+            <a href="?page={{page}}"><span>{{page}}</span></a>
+            {% endfor %}
+            {% if data.has_next %}
+            <a href="?page={{ data.next_page_number }}"><span><i class="fa fa-angle-right"></i></span></a>
+            <a href="?page={{ lastpage }}"><span><i class="fa fa-angles-right"></i></span></a>
+            {% endif %}
+        </div> 
+    </div>
+</div>
+{% endblock body %}

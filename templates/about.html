@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us | AutoInsight{% endblock title %}
+
+{% block body %}
+<!--About Us-->
+<div class="container">
+    <div id="about">
+        <div class="row">
+            <div class="about_col_1">
+                {% load static%}
+                <img src="{% static 'images/logos/autoInsightAbout.png' %}" alt="AutoInsight_logo">
+            </div>
+            <div class="about_col_2">
+                <h1 class="sub_title">About Us</h1>
+                <p>Welcome to AUTOINSIGHT, the ultimate destination for all the latest news, reviews, and insights on
+                    the automobile industry. We are a team of passionate and experienced professionals who are dedicated
+                    to providing you with the most comprehensive and up-to-date information on everything related to
+                    cars, trucks, motorcycles, and more.</p>
+
+                <p>Our website is designed to be a one-stop-shop for all your automotive needs. We cover everything from
+                    the latest industry news and trends to in-depth reviews of the hottest new vehicles on the market.
+                    Our team of expert writers and contributors are always on the pulse of the industry, and we are
+                    committed to providing you with the most accurate and informative content possible.</p>
+
+                <p>At AUTOINSIGHT, we believe that knowledge is power. We are committed to providing our readers with
+                    the tools they need to make informed decisions when it comes to their automotive needs. Whether you
+                    are in the market for a new vehicle, or just looking to stay up-to-date with the latest industry
+                    trends, we have you covered.</p>
+
+                <p>Our team is comprised of some of the most knowledgeable and experienced professionals in the
+                    industry. From automotive journalists to seasoned mechanics, we have the expertise and insight to
+                    provide you with the most accurate and helpful information possible. We are passionate about what we
+                    do, and we take pride in providing our readers with the most comprehensive and engaging content
+                    possible.</p>
+
+                <p>We believe in transparency and open communication. Our website is designed to be user-friendly and
+                    easy to navigate, with all the information you need just a click away. We also welcome feedback and
+                    suggestions from our readers, as we are constantly striving to improve and evolve our website to
+                    meet the changing needs of the industry.</p>
+
+                <p>Thank you for choosing AUTOINSIGHT as your go-to source for all things automotive. Contact us today
+                    to learn more about our website, and how we can help you stay informed and empowered in the
+                    ever-changing world of the automobile industry.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}
