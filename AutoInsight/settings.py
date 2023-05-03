@@ -25,10 +25,7 @@ SECRET_KEY = 'django-insecure-eh4u=*)23f6qviba5puovnbu1s_yu&c0=j^^wp%zfhuq$*wo^7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*', '.onrender.com']
-
-# ALLOWED_HOSTS = ['.onrender.com']
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -139,6 +136,6 @@ MEDIA_URL = '/media/'
 # to make connection with render
 STATIC_URL = '/static/'
 MEDIA_URL =  'media/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
